@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: sacr-frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    envVars:
+      - key: PORT
+        value: 8501
+      - key: BACKEND_URL
+        fromService:
+          name: sacr-backend
+          type: web
+          property: host
+    buildCommand: docker build -t sacr-frontend .
+    startCommand: docker run -p 8501:8501 sacr-frontend
+
+  - type: web
+    name: sacr-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: PROMPTFLOW_ENDPOINT
+        sync: false
+      - key: PROMPTFLOW_KEY
+        sync: false
+    buildCommand: docker build -t sacr-backend .
+    startCommand: docker run -p 8000:8000 sacr-backend
