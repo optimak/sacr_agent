@@ -1,26 +1,34 @@
-# AI Agent for Cybersecurity Blog Knowledge Base
+# AI Agent for Cybersecurity Blog Knowledge Base (Local Development)
 
-This is an autonomous AI agent that scrapes, extracts, stores, and queries cybersecurity blog data. Its purpose is to mirror SACR's real-world workflow by autonomously scraping data from cybersecurity blogs (Okta, CrowdStrike, Palo Alto Networks, Mandiant), storing it in a Notion database, and enabling natural language queries through a RAG pipeline.
+This is the **development branch** for running the AI agent locally. It's an autonomous AI agent that scrapes, extracts, stores, and queries cybersecurity blog data using **ChromaDB** for local vector storage and **local Prompt Flow** for AI processing.
 
-## Live Demo & Links
+> **Note:** This is the development branch for local usage. The deployed version can be found in the [main branch](https://github.com/optimak/sacr_agent/tree/main).
 
-* **Live Demo:** [https://sacr-frontend.onrender.com/](https://sacr-frontend.onrender.com/)
-* **Backend API:** [https://sacr-backend.onrender.com/](https://sacr-backend.onrender.com/)
+## GitHub Repository
+
 * **GitHub Repo:** [https://github.com/optimak/sacr_agent/](https://github.com/optimak/sacr_agent/)
-* **Public Notion Database:** [https://www.notion.so/26434546e54081ff84d3d715357d6398](https://www.notion.so/26434546e54081ff84d3d715357d6398?v=26434546e54081af9aad000c33d4f783&source=copy_link)
+* **Current Branch:** `development` (local ChromaDB setup)
+* **Deployed Version:** Available in `main` branch
 
 ---
 
-## Architecture & Workflow
+## Architecture & Workflow (Local Development)
 
-This system consists of four main components working together to create an intelligent cybersecurity knowledge base:
+This **local development version** uses ChromaDB for vector storage and local Prompt Flow for AI processing. The system consists of four main components:
 
 ### System Components
 
 1. **Data Ingestion Pipeline** - Web scrapers that extract content from cybersecurity blogs
 2. **Notion Database** - Centralized storage for all scraped content with structured metadata
-3. **RAG Agent** - Processes Notion content with OCR, chunking, and embedding generation
+3. **Local RAG Agent** - Processes Notion content with OCR, chunking, and ChromaDB vector storage
 4. **Query Interface** - Streamlit frontend with FastAPI backend for natural language queries
+
+### Local Development Features
+
+- **ChromaDB**: Local vector database for fast similarity search
+- **Local Prompt Flow**: AI workflows run locally without external dependencies
+- **Real-time Status**: Frontend shows system health and readiness
+- **One-Command Setup**: Single Docker command runs the entire pipeline
 
 ### Workflow Diagram
 
@@ -93,26 +101,27 @@ This system consists of four main components working together to create an intel
 
 ---
 
-## Technologies Used
+## Technologies Used (Local Development)
 
-### Technologies
+### Core Technologies
 * **Web Scraping:** BeautifulSoup4, Requests, HTTPx
-* **RAG Pipeline:** Azure OpenAI, Azure AI Search, NLTK, Tiktoken
+* **Vector Database:** ChromaDB (local storage)
+* **RAG Pipeline:** Azure OpenAI, NLTK, Tiktoken
+* **AI Processing:** Local Prompt Flow
 * **Notion Integration:** Notion Client SDK
-* **Frontend:** Streamlit
+* **Frontend:** Streamlit with real-time status monitoring
 * **Backend:** FastAPI, Uvicorn
-* **Deployment:** Render (Docker containers)
-* **AI Models:** Azure OpenAI text-embedding-3-small, GPT-4o
+* **Containerization:** Docker & Docker Compose
+* **AI Models:** Azure OpenAI text-embedding-3-small, GPT-4o, GPT-4o-mini
 
 ---
 
 ## Setup Instructions
 
 ### Prerequisites
-* **Python 3.11+**
-* **Docker and Docker Compose**
-* **Notion Account**
-* **Azure Account** with OpenAI, AI Search, and Prompt Flow services
+* **Docker and Docker Compose** (for local containerized setup)
+* **Notion Account** (for data storage)
+* **Azure OpenAI Account** (for AI models and embeddings)
 
 ### Quick Start with Docker (Recommended)
 
@@ -212,42 +221,15 @@ Wait 2-3 minutes for everything to start up.
 - **"Backend: Offline"**: Check your `.env` file has correct API keys
 - **No answers**: Make sure Azure OpenAI keys are valid
 
-### Environment Setup Guides
+## Agent Workflow Details
 
-#### 1. Notion Setup
-**Step-by-step guide:**
-
-1. **Create Notion Account** (if you don't have one):
-   - Go to [https://www.notion.so/](https://www.notion.so/)
-   - Sign up for a free account
-
-2. **Create Integration:**
-   - Go to [https://www.notion.so/my-integrations](https://www.notion.so/my-integrations)
-   - Click "New integration"
-   - Give it a name (e.g., "SACR Agent")
-   - Select your workspace
-   - Click "Submit"
-   - **Copy the "Internal Integration Token"** (starts with `secret_`)
-
-3. **Create Database:**
-   - In Notion, create a new page or use an existing one
-   - Add a database with these properties:
-     - Title (Title)
-     - Company (Rich Text)
-     - Date Published (Date)
-     - Date Pulled (Date)
-     - Webpage URL (URL)
-     - Image URLs (Files)
-     - Outbound Links (Rich Text)
-
-4. **Share Database with Integration:**
-   - Click "Share" on your database page
-   - Click "Invite" and select your integration
-   - Give it "Full access"
-
-5. **Get Database ID:**
-   - Copy the database ID from the URL: `https://notion.so/Database-Name-DATABASE_ID?v=...`
-   - The ID is the long string after the last dash
+### Local Development Workflow
+1. **Data Scraping**: Downloads latest posts from cybersecurity blogs
+2. **Notion Storage**: Stores content in your Notion database
+3. **Processing**: Extracts text, runs OCR on images, creates chunks
+4. **ChromaDB Indexing**: Stores embeddings in local vector database
+5. **Query Processing**: Uses local Prompt Flow to answer questions
+6. **Response Generation**: Returns answers with source citations
 
 #### 2. Azure OpenAI Setup
 **Complete setup guide:**
@@ -399,21 +381,6 @@ Here are example queries that work with the Notion database:
 * "What security tools were discussed in recent posts?"
 * "Find articles with images showing attack patterns."
 * "What security trends are emerging across all companies?"
-
-### Query Performance Analysis
-
-| # | Question | Your Answer | Expected Answer | Comment |
-|---|----------|-------------|-----------------|---------|
-| 1 | What capabilities does CrowdStrike Falcon Exposure Management unite in a single platform? | VM, ASM, CAASM integrated with continuous visibility, real-time risk prioritization, and automated remediation. | VM + ASM + CAASM unified for visibility, prioritization, remediation. | ✅ Strong — detailed and matches source exactly. |
-| 2 | How does the platform help security teams prioritize risks based on adversary behavior? | Uses Threat Graph, Intel Graph, Asset Graph for single source of truth; risk prioritization algorithms aligned to adversary behavior. | Correlates risks across domains and prioritizes adversary-aligned threats. | ✅ Excellent depth — more detail than expected. |
-| 3 | What key shift in approach is CrowdStrike advocating for securing AI infrastructure? | Advocates real-time, full-stack, unified security for AI attack surfaces (distributed infra, data, agents, SaaS). | Move from reactive tools → real-time, integrated AI security. | ✅ Comprehensive — shows awareness of AI-specific risks. |
-| 4 | What recognition did Palo Alto Networks receive in Gartner's 2025 Magic Quadrant, and what qualities were highlighted? | Recognized as Leader; furthest for Completeness of Vision; noted for AI-powered unified protection across all environments. | Leader in 2025 Magic Quadrant; strong vision + execution. | ✅ Very strong — includes extra Gartner context. |
-| 5 | What does a hybrid mesh firewall (HMF) refer to in this context? | Multi-deployment model (hardware, virtual, cloud), unified management, CI/CD integration, AI-driven threat prevention. | Unified firewall across hybrid envs, managed centrally. | ✅ Excellent — more detailed than required. |
-| 6 | Who was the primary target and what technique was leveraged in the PRC-Nexus espionage campaign? | Diplomats in SE Asia; adversary-in-the-middle + social engineering; malware STATICPLUGIN + SOGU.SEC. | Diplomats in SE Asia; AiTM + malware delivery. | ✅ Very strong — includes malware names, adds precision. |
-| 7 | What vulnerability category is discussed in the Sitecore blog, and what is its key characteristic? | ViewState deserialization (CVE-2025-53690); machine key exposure → RCE via malicious payloads. | ViewState deserialization vuln allowing RCE. | ✅ Excellent — precise CVE & root cause. |
-| 8 | What types of identities does Okta ISPM help secure, and why are they particularly critical? | Human, non-human, and agentic identities; critical because they inherit powerful permissions (e.g., GitHub apps, AWS IAM). | Human + machine identities, especially high-privilege/service accounts. | ✅ Excellent — concrete examples add realism. |
-| 9 | What is the fundamental challenge Okta emphasizes about AI agents and workload identities? | AI agents inherit risky permissions (privileged, unused, toxic combos), creating exploit risks; need comprehensive identity strategy. | Workload identity inheritance creates exploitable risks. | ✅ Very strong — precise, captures "toxic combos." |
-| 10 | Across CrowdStrike and Palo Alto Networks, how are AI capabilities being integrated differently in securing cyber environments? | Only CrowdStrike AI info available (Falcon Cloud Security, Charlotte AI); Palo Alto AI details not in context. | CrowdStrike = AI-driven full-stack protection; Palo Alto = AI-enhanced HMF. | ⚠️ Incomplete — misses Palo Alto AI integration; needs extra retrieval. |
 
 ---
 
