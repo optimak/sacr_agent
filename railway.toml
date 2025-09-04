@@ -1,6 +1,7 @@
 [build]
-builder = "DOCKERFILE"
-dockerfilePath = "docker-compose.yml"
+builder = "DOCKER"
 
 [deploy]
-startCommand = "docker-compose up"
+startCommand = "docker compose up"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
