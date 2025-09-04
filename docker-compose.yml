@@ -1,22 +1,59 @@
 version: '3.8'
 services:
-  frontend:
+  # Orchestration service that runs everything
+  orchestrator:
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "${PORT:-8501}:8501"
+      context: .
+      dockerfile: Dockerfile.orchestrator
+    volumes:
+      - ./data:/app/data
+      - ./rag_agent/src/rag_output:/app/rag_agent/src/rag_output
+      - ./rag_agent/src/cache:/app/rag_agent/src/cache
     environment:
-      - BACKEND_URL=http://backend:8000
-    depends_on:
-      - backend
-
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
-    environment:
+      # Notion Configuration
+      - NOTION_TOKEN=${NOTION_TOKEN}
+      - NOTION_DATABASE_NAME=${NOTION_DATABASE_NAME:-CyberSecurity Database}
+      - PARENT_PAGE_ID=${PARENT_PAGE_ID}
+      
+      # Vector Database Configuration
+      - USE_LOCAL_VECTOR_DB=${USE_LOCAL_VECTOR_DB:-true}
+      - USE_AZURE_AI_SEARCH=${USE_AZURE_AI_SEARCH:-false}
+      - LOCAL_VECTOR_DB_ENGINE=${LOCAL_VECTOR_DB_ENGINE:-chroma}
+      
+      # Azure OpenAI Configuration
+      - AZURE_OPENAI_KEY=${AZURE_OPENAI_KEY}
+      - AZURE_ENDPOINT=${AZURE_ENDPOINT}
+      - EMBEDDING_DEPLOYMENT=${EMBEDDING_DEPLOYMENT:-text-embedding-3-small}
+      - GPT4O_DEPLOYMENT=${GPT4O_DEPLOYMENT:-gpt-4o}
+      - GPT4O_MINI_DEPLOYMENT=${GPT4O_MINI_DEPLOYMENT:-gpt-4o-mini}
+      
+      # Azure AI Search Configuration (if using)
+      - AZURE_SEARCH_SERVICE_NAME=${AZURE_SEARCH_SERVICE_NAME}
+      - AZURE_SEARCH_API_KEY=${AZURE_SEARCH_API_KEY}
+      - INDEX_NAME=${INDEX_NAME:-sacr-rag}
+      
+      # Prompt Flow Configuration
+      - USE_PROMPTFLOW_LOCAL=${USE_PROMPTFLOW_LOCAL:-true}
       - PROMPTFLOW_ENDPOINT=${PROMPTFLOW_ENDPOINT}
       - PROMPTFLOW_KEY=${PROMPTFLOW_KEY}
+      
+      # Image Processing Configuration
+      - ENABLE_IMAGE_OCR=${ENABLE_IMAGE_OCR:-true}
+      - ENABLE_IMAGE_UNDERSTANDING=${ENABLE_IMAGE_UNDERSTANDING:-false}
+      
+      # Processing Configuration
+      - MAX_PAGES_TO_PROCESS=${MAX_PAGES_TO_PROCESS:-100}
+      - MAX_TOKENS_PER_CHUNK=${MAX_TOKENS_PER_CHUNK:-380}
+      - OVERLAP_TOKENS=${OVERLAP_TOKENS:-40}
+      - TOP_K=${TOP_K:-5}
+      
+      # Output Configuration
+      - OUTPUT_DIR=${OUTPUT_DIR:-rag_output}
+      - CACHE_DIR=${CACHE_DIR:-cache}
+      
+      # Port Configuration
+      - PORT=${PORT:-8501}
+    ports:
+      - "8501:8501"  # Frontend
+      - "8000:8000"  # Backend
+    command: python orchestrate.py

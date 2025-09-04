@@ -159,6 +159,58 @@ This system consists of four main components working together to create an intel
    - Backend API: http://localhost:8000
    - API Health Check: http://localhost:8000/health
 
+## How to Use Locally
+
+### Step 1: Get Your API Keys
+You need these accounts and keys:
+- **Notion**: Get your API token from [notion.so/my-integrations](https://notion.so/my-integrations)
+- **Azure OpenAI**: Get your API key and endpoint from [Azure Portal](https://portal.azure.com)
+
+### Step 2: Set Up Environment Variables
+Create a `.env` file in the project folder with these variables:
+
+```bash
+# Notion (Required)
+NOTION_TOKEN=secret_xyz123...
+NOTION_DATABASE_NAME=CyberSecurity Database
+
+# Azure OpenAI (Required)
+AZURE_OPENAI_KEY=your_azure_openai_key
+AZURE_ENDPOINT=https://your-resource.openai.azure.com/
+GPT4O_DEPLOYMENT=gpt-4o
+GPT4O_MINI_DEPLOYMENT=gpt-4o-mini
+
+# Local Setup (Required)
+USE_LOCAL_VECTOR_DB=true
+USE_PROMPTFLOW_LOCAL=true
+ENABLE_IMAGE_OCR=true
+```
+
+### Step 3: Run the System
+```bash
+docker-compose up --build
+```
+
+Wait 2-3 minutes for everything to start up.
+
+### Step 4: Use the App
+1. Go to http://localhost:8501
+2. Wait for "🚀 App: Ready!" status
+3. Ask questions like:
+   - "What is CrowdStrike Falcon?"
+   - "How does Okta handle identity security?"
+   - "What are the latest cybersecurity threats?"
+
+### What Happens Automatically
+1. **Data Scraping**: Downloads latest posts from cybersecurity blogs
+2. **Processing**: Extracts text, images, and creates searchable chunks
+3. **AI Setup**: Prepares the AI to answer your questions
+4. **Ready**: Shows green status when everything is working
+
+### Troubleshooting
+- **"App: Starting..."**: Wait 2-3 minutes for full startup
+- **"Backend: Offline"**: Check your `.env` file has correct API keys
+- **No answers**: Make sure Azure OpenAI keys are valid
 
 ### Environment Setup Guides
 

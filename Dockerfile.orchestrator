@@ -1,0 +1,51 @@
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements files
+COPY rag_agent/src/requirements.txt /app/rag_agent/src/requirements.txt
+COPY data_ingestion/requirements.txt /app/data_ingestion/requirements.txt
+COPY backend/requirements.txt /app/backend/requirements.txt
+COPY frontend/requirements.txt /app/frontend/requirements.txt
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r rag_agent/src/requirements.txt
+RUN pip install --no-cache-dir -r data_ingestion/requirements.txt
+
+# Fix PromptFlow installation conflict - more aggressive cleanup
+RUN pip uninstall -y promptflow promptflow-core promptflow-devkit promptflow-azure promptflow-tracing || true
+RUN pip install --no-cache-dir --force-reinstall promptflow>=1.8.0
+RUN pip install --no-cache-dir marshmallow==3.20.1  # Fix marshmallow compatibility
+RUN pip install --no-cache-dir "numpy<2.0"  # Fix ChromaDB compatibility with NumPy 2.0
+
+RUN pip install --no-cache-dir -r backend/requirements.txt
+RUN pip install --no-cache-dir -r frontend/requirements.txt
+
+# Copy all source code
+COPY . /app/
+
+# Create necessary directories
+RUN mkdir -p /app/rag_agent/src/rag_output
+RUN mkdir -p /app/rag_agent/src/cache
+RUN mkdir -p /app/data
+
+# Set environment variables
+ENV PYTHONPATH=/app:/app/rag_agent/src:/app/rag_agent/flows
+ENV STREAMLIT_SERVER_PORT=8501
+ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
+
+# Expose ports
+EXPOSE 8000 8501
+
+# Make orchestrate script executable
+RUN chmod +x /app/orchestrate.py
+
+# Default command
+CMD ["python", "orchestrate.py"]

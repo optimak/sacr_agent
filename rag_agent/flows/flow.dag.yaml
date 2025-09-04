@@ -1,0 +1,61 @@
+id: template_standard_flow
+name: Template Standard Flow
+inputs:
+  query:
+    type: string
+    description: User's cybersecurity question
+    is_chat_input: false
+outputs:
+  answer:
+    type: string
+    reference: ${format_final_response.output}
+nodes:
+- name: search_documents
+  type: python
+  source:
+    type: code
+    path: Search_Documents.py
+  inputs:
+    search_connection: sacr-search-connection-env
+    openai_connection: ai-optimusto1123ai525946063428_aoai
+    query: ${inputs.query}
+  use_variants: false
+- name: prepare_context
+  type: python
+  source:
+    type: code
+    path: Prepare_context.py
+  inputs:
+    search_results: ${search_documents.output}
+  use_variants: false
+- name: generate_response
+  type: llm
+  source:
+    type: code
+    path: Generate_Response.jinja2
+  inputs:
+    deployment_name: gpt-4o-dep
+    temperature: 0.3
+    top_p: 1
+    max_tokens: 2000
+    response_format:
+      type: text
+    prepare_context_output: ${prepare_context.output}
+    query: ${inputs.query}
+  provider: AzureOpenAI
+  connection: ai-optimusto1123ai525946063428_aoai
+  api: chat
+  module: promptflow.tools.aoai
+  use_variants: false
+- name: format_final_response
+  type: python
+  source:
+    type: code
+    path: Format_Final_Response.py
+  inputs:
+    llm_response: ${generate_response.output}
+    search_results: ${search_documents.output}
+  use_variants: false
+node_variants: {}
+environment:
+  python_requirements_txt: requirements.txt

@@ -7,3 +7,6 @@ azure-identity==1.15.0
 python-dotenv==1.0.0
 pandas
 tenacity
+chromadb==0.5.15
+pillow==10.1.0
+promptflow==1.8.0
