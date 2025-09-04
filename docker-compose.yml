@@ -1,0 +1,23 @@
+# A simplified example docker-compose.yml
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    networks:
+      - my_app_network
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    networks:
+      - my_app_network
+
+networks:
+  my_app_network:
+    driver: bridge
