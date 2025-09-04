@@ -369,20 +369,6 @@ Wait 2-3 minutes for everything to start up.
 
 ---
 
-## Sample Queries & Responses
-
-Here are example queries that work with the Notion database:
-
-### Sample Queries
-* "What did Okta's most recent blog post focus on?"
-* "Which company mentioned AI in their blog updates?"
-* "What are the latest cybersecurity threats mentioned in the blogs?"
-* "Show me articles about zero-day vulnerabilities."
-* "What security tools were discussed in recent posts?"
-* "Find articles with images showing attack patterns."
-* "What security trends are emerging across all companies?"
-
----
 
 ## Challenges & Lessons Learned
 
