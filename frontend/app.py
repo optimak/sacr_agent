@@ -3,7 +3,7 @@ import re
 import requests
 import streamlit as st
 
-BACKEND_URL = "http://backend:8000/ask"
+BACKEND_URL = os.getenv("BACKEND_URL", "https://sacr-backend.onrender.com") + "/ask"
 
 # Initialize session state
 if "is_busy" not in st.session_state:
