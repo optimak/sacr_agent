@@ -1,9 +1,11 @@
 services:
   - type: web
     name: sacr-frontend
-    env: docker
-    rootDir: frontend
-    dockerfilePath: Dockerfile
+    runtime: docker
+    region: oregon
+    plan: free
+    buildCommand: docker build -t sacr-frontend frontend/
+    startCommand: docker run -p 8501:8501 sacr-frontend
     envVars:
       - key: PORT
         value: 8501
@@ -15,11 +17,31 @@ services:
 
   - type: web
     name: sacr-backend
-    env: docker
-    rootDir: backend
-    dockerfilePath: Dockerfile
+    runtime: docker
+    region: oregon
+    plan: free
+    buildCommand: docker build -t sacr-backend backend/
+    startCommand: docker run -p 8000:8000 sacr-backend
     envVars:
       - key: PROMPTFLOW_ENDPOINT
-        sync: false
+        value: "https://sacr-project-sacr-final.eastus2.inference.ml.azure.com/score"
       - key: PROMPTFLOW_KEY
         sync: false
+      - key: NOTION_TOKEN
+        sync: false
+      - key: DATABASE_ID
+        value: "26334546e540811b97d9e1ec76f4660b"
+      - key: AZURE_OPENAI_KEY
+        sync: false
+      - key: AZURE_ENDPOINT
+        value: "https://ai-optimusto1123ai525946063428.openai.azure.com/"
+      - key: EMBEDDING_DEPLOYMENT
+        value: "text-embedding-3-small"
+      - key: GPT4O_DEPLOYMENT
+        value: "gpt-4o"
+      - key: AZURE_SEARCH_SERVICE_NAME
+        value: "sacr-search-1"
+      - key: AZURE_SEARCH_API_KEY
+        sync: false
+      - key: INDEX_NAME
+        value: "sacr-rag2"
